@@ -7,67 +7,61 @@
     <!-- A-Frame + AR.js -->
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
-
-    <!-- Optional: Particle animation (if needed later) -->
-    <script src="https://unpkg.com/aframe-particle-system-component@1.0.4/dist/aframe-particle-system-component.min.js"></script>
   </head>
 
   <body style="margin: 0; overflow: hidden">
     <a-scene embedded arjs>
-      <!-- LOAD ASSETS -->
+      <!-- ASSETS -->
       <a-assets>
-        <!-- Beach ground texture -->
-        <img id="beachTexture" src="textures/beach1.jpg" />
+        <img id="sandTex" src="textures/beach3.jpg" />
 
-        <!-- Placeholder: Group members will add these -->
-        <!-- These are some examples your actual model goes here -->
         <a-asset-item id="lifeguard" src="models/lifeguard.glb"></a-asset-item>
-        <a-asset-item id="palm" src="models/palm_tree.glb"></a-asset-item>
+        <!-- <a-asset-item id="palm" src="models/palm_tree.glb"></a-asset-item>
         <a-asset-item id="surfboard" src="models/surfboard.glb"></a-asset-item>
-        <a-asset-item id="jetski" src="models/jetski.glb"></a-asset-item>
+        <a-asset-item id="jetski" src="models/jetski.glb"></a-asset-item> -->
       </a-assets>
 
-      <!-- MARKER: Whole scene will be triggered by this -->
       <a-marker preset="hiro">
-        <!-- BEACH GROUND -->
+        <!-- ground plane -->
         <a-plane
-          src="#beachTexture"
+          src="#sandTex"
           rotation="-90 0 0"
           position="0 0 0"
-          width="4"
-          height="4"
-        ></a-plane>
+          width="10"
+          height="10"
+        >
+        </a-plane>
 
         <!-- LIFEGUARD TOWER (Shadhir) -->
         <a-entity
           gltf-model="#lifeguard"
-          position="-1 0 0.5"
-          rotation="0 180 0"
-          scale="0.5 0.5 0.5"
+          position="-3 0 2"
+          rotation="0 -90 0"
+          scale="0.15 0.15 0.15"
         ></a-entity>
 
         <!-- PALM TREE (Teammate 1) -->
-        <a-entity
+        <!-- <a-entity
           gltf-model="#palm"
           position="0.5 0 0.5"
           scale="0.4 0.4 0.4"
-        ></a-entity>
+        ></a-entity> -->
 
         <!-- SURFBOARD (Teammate 2) -->
-        <a-entity
+        <!-- <a-entity
           gltf-model="#surfboard"
           position="1.2 0 0.2"
           scale="0.3 0.3 0.3"
-        ></a-entity>
+        ></a-entity> -->
 
         <!-- JETSKI (Teammate 3) -->
-        <a-entity
+        <!-- <a-entity
           gltf-model="#jetski"
           position="0 -0.1 -1.3"
           scale="0.3 0.3 0.3"
-        ></a-entity>
-      </a-marker>
+        ></a-entity> -->
 
+      </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
   </body>
