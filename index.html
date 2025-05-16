@@ -19,6 +19,8 @@
         <!-- <a-asset-item id="palm" src="models/palm_tree.glb"></a-asset-item>
         <a-asset-item id="surfboard" src="models/surfboard.glb"></a-asset-item>
         <a-asset-item id="jetski" src="models/jetski.glb"></a-asset-item> -->
+        <a-asset-item id="yacht" src="models/yatch_II.glb"></a-asset-item>
+        <audio id="waveSound" src="sounds/waves.mp3" preload="auto"></audio>
       </a-assets>
 
       <a-marker preset="hiro">
@@ -55,11 +57,15 @@
         ></a-entity> -->
 
         <!-- JETSKI (Teammate 3) -->
-        <!-- <a-entity
-          gltf-model="#jetski"
-          position="0 -0.1 -1.3"
-          scale="0.3 0.3 0.3"
-        ></a-entity> -->
+        <a-entity
+          gltf-model="#yacht"
+          position="0 -0.1 -2.9"
+          rotation="0 -90 10"
+          scale="0.1 0.1 0.1"
+          animation__bob="property: position; to: 0 0.3 -3.2; dur: 2500; easing: easeInOutSine; loop: true; dir: alternate"
+          animation__rotate="property: rotation; to: 0 -90 15; dur: 3000; easing: easeInOutSine; loop: true; dir: alternate"
+          sound="src: #waveSound; autoplay: true; loop: true; volume: 1"
+        ></a-entity>
 
       </a-marker>
       <a-entity camera></a-entity>
