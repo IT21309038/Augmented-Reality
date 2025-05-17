@@ -82,11 +82,11 @@
         <a-entity
           gltf-model="#walking"
           position="-4 0 0"
-          rotation="0 -90 -2"
+          rotation="0 90 -2"
           scale="1 1 1"
           animation-mixer="clip: *; loop: repeat"
           animation__bob="property: position; to: 4 0 1; dur: 10000; easing: easeInOutSine; loop: true; dir: alternate"
-          rotate-at-target
+          rotate-every-interval="angle: -180; interval: 10000"
         ></a-entity>
 
         <!-- Animated seagull Model -->
@@ -113,7 +113,7 @@
           position="0 -0.1 -2.9"
           rotation="0 -90 10"
           scale="0.1 0.1 0.1"
-          animation__bob="property: position; to: 0 0.3 -3.2; dur: 2500; easing: easeInOutSine; loop: true; dir: alternate"
+          animation__bob="property: position; to: 0 0.3 -3.2; dur: 3000; easing: easeInOutSine; loop: true; dir: alternate"
           animation__rotate="property: rotation; to: 0 -90 15; dur: 3000; easing: easeInOutSine; loop: true; dir: alternate"
           sound="src: #waveSound; autoplay: true; loop: true; volume: 1"
         ></a-entity>
@@ -132,6 +132,31 @@
       marker.addEventListener("markerLost", () => {
         console.log("Hiro marker lost.");
       });
+    </script>
+
+     <script>
+      AFRAME.registerComponent('rotate-every-interval', {
+  schema: {
+    angle: { type: 'number', default: -90 }, // Amount to rotate (in degrees)
+    interval: { type: 'number', default: 10000 } // Interval in ms
+  },
+  init: function () {
+    this.elapsed = 0;
+  },
+  tick: function (time, delta) {
+    this.elapsed += delta;
+    if (this.elapsed >= this.data.interval) {
+      // Get current rotation
+      let currentRotation = this.el.getAttribute('rotation');
+      // Update y-rotation by adding the angle (negative for -y)
+      currentRotation.y += this.data.angle;
+      // Set new rotation
+      this.el.setAttribute('rotation', currentRotation);
+      // Reset elapsed time
+      this.elapsed = 0;
+    }
+  }
+});
     </script>
   </body>
 </html>
