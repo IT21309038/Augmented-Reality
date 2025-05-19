@@ -32,6 +32,7 @@
           id="umbrella"
           src="models/umbrella_wooden_chair.glb"
         ></a-asset-item>
+        <a-asset-item id="grass" src="models/animated_grass.glb"></a-asset-item>
         <a-asset-item id="yacht" src="models/yatch_II.glb"></a-asset-item>
         <audio id="waveSound" src="sounds/waves.mp3" preload="auto"></audio>
         <audio
@@ -70,6 +71,22 @@
           position="0 0 0"
           rotation="0 -90 0"
           scale="0.003 0.003 0.003"
+        ></a-entity>
+
+        <!-- Umbrella and Chair -->
+        <a-entity
+          gltf-model="#umbrella"
+          position="3 0 -3"
+          rotation="0 -45 0"
+          scale="0.1 0.1 0.1"
+        ></a-entity>
+
+        <!--Grass-->
+        <a-entity
+          gltf-model="#grass"
+          position="0.5 0 -1.5"
+          scale="0.05 0.05 0.05"
+          animation-mixer
         ></a-entity>
 
         <!-- Ground Plane -->
