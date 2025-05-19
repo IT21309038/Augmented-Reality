@@ -23,10 +23,7 @@
         <a-asset-item id="surfboard" src="models/surfboard.glb"></a-asset-item> -->
         <a-asset-item id="tree-obj" src="models/tree.obj"></a-asset-item>
         <a-asset-item id="tree-mtl" src="models/tree.mtl"></a-asset-item>
-        <a-asset-item
-          id="walking"
-          src="models/ic2.glb"
-        ></a-asset-item>
+        <a-asset-item id="walking" src="models/ic2.glb"></a-asset-item>
         <a-asset-item
           id="girl_bikini"
           src="models/girl_bikini.glb"
@@ -67,6 +64,14 @@
           position="0 0 0"
           rotation="0 -90 0"
           scale="0.003 0.003 0.003"
+        ></a-entity>
+
+        <!-- Umbrella and Chair -->
+        <a-entity
+          gltf-model="#umbrella"
+          position="3 0 -3"
+          rotation="0 -45 0"
+          scale="0.1 0.1 0.1"
         ></a-entity>
 
         <!-- Ground Plane -->
@@ -134,29 +139,29 @@
       });
     </script>
 
-     <script>
-      AFRAME.registerComponent('rotate-every-interval', {
-  schema: {
-    angle: { type: 'number', default: -90 }, // Amount to rotate (in degrees)
-    interval: { type: 'number', default: 10000 } // Interval in ms
-  },
-  init: function () {
-    this.elapsed = 0;
-  },
-  tick: function (time, delta) {
-    this.elapsed += delta;
-    if (this.elapsed >= this.data.interval) {
-      // Get current rotation
-      let currentRotation = this.el.getAttribute('rotation');
-      // Update y-rotation by adding the angle (negative for -y)
-      currentRotation.y += this.data.angle;
-      // Set new rotation
-      this.el.setAttribute('rotation', currentRotation);
-      // Reset elapsed time
-      this.elapsed = 0;
-    }
-  }
-});
+    <script>
+      AFRAME.registerComponent("rotate-every-interval", {
+        schema: {
+          angle: { type: "number", default: -90 }, // Amount to rotate (in degrees)
+          interval: { type: "number", default: 10000 }, // Interval in ms
+        },
+        init: function () {
+          this.elapsed = 0;
+        },
+        tick: function (time, delta) {
+          this.elapsed += delta;
+          if (this.elapsed >= this.data.interval) {
+            // Get current rotation
+            let currentRotation = this.el.getAttribute("rotation");
+            // Update y-rotation by adding the angle (negative for -y)
+            currentRotation.y += this.data.angle;
+            // Set new rotation
+            this.el.setAttribute("rotation", currentRotation);
+            // Reset elapsed time
+            this.elapsed = 0;
+          }
+        },
+      });
     </script>
   </body>
 </html>
